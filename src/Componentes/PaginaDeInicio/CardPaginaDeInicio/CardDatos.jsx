@@ -1,9 +1,9 @@
-export function CardGraficas() {
+export function CardDatos() {
   return (
     <>
-      <main className="bg-white w-2/5 p-1">
+      <main className="bg-ColorFondo p-1">
         <div>
-            
+            Datos en espera...
         </div>
       </main>
     </>
