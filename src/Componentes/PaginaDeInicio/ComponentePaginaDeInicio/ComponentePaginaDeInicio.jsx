@@ -1,0 +1,36 @@
+import { ComponenteNavegacion } from "../../UI/Navegacion/ComponenteNavegacion/ComponenteNavegacion"
+import { CardGraficas } from "../CardPaginaDeInicio/CardGraficas"
+import { Contenedor } from "../../UI/Contenedor"
+import { Titulos } from "../../UI/Texto"
+
+
+export function ComponentePaginaDeInicio(){
+    return(<>
+    <main className="h-full w-full py-14 ">
+        <section className="h-full w-full flex justify-center" >
+        <nav className="h-full w-4/5">
+            <ComponenteNavegacion/>
+        </nav>
+        </section>
+        <section className="h-full w-full flex justify-center items-center mt-10">
+            <Contenedor>
+                <section className="h-full w-full bg-white ">
+                    <div className="text-center p-10">
+                        <Titulos textoTitulo="Datos De Monitoreo"/>
+                    </div>
+                    <div className="flex">
+  
+                    <fieldset className="h-full w-1/4 bg-blue-500 p-5">
+akalk
+                    </fieldset >
+
+                    <fieldset className="h-full w-3/4 bg-red-600 p-5">
+                    <CardGraficas/>
+                    </fieldset>
+                    </div>
+                </section>
+            </Contenedor>
+        </section>
+    </main>
+    </>)
+}
