@@ -31,9 +31,7 @@ export function ComponentePaginaDeInicio() {
               </fieldset>
 
               {/* Tarjetas de Gráficas */}
-              <fieldset className="w-3/4 p-5 flex gap-x-16 gap-y-5 flex-wrap">
-                <CardGraficas />
-                <CardGraficas />
+              <fieldset className="bg-red-700  w-full p-5 flex gap-x-16 gap-y-5 flex-wrap">
                 <CardGraficas />
               </fieldset>   
             </div>

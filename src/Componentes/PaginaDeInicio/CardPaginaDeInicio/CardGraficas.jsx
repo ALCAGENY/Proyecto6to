@@ -1,11 +1,11 @@
-import GraficaDeMonitoreo from "../../../assets/Imagenes/GraficaDeMonitoreo.png"
+import MultiSeriesChart from "../CardRadiograma/CardRadiogama";
 
 export function CardGraficas() {
   return (
     <>
-      <main className="bg-ColorFondo w-2/5 p-1">
+      <main className="bg-ColorFondo w-full h-full p-1">
         <div>
-            <img  src={GraficaDeMonitoreo} alt="GraficaDeMonitoreo" />
+           <MultiSeriesChart/>
         </div>
       </main>
     </>
