@@ -14,7 +14,7 @@ export function ComponenteRegistroPaciente(){
                          </div>
                         </fieldset>
 
-                        <fieldset className=" h-full w-2/3 p-5 flex justify-center items-center">
+                        <fieldset className=" h-full w-2/3 flex justify-center items-center">
                         <FormularioRegistroPaciente/>
                         </fieldset>
                     </section>
