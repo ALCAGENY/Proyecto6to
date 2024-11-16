@@ -22,7 +22,7 @@ export function FormularioSesion() {
             </div>
             <div className="mt-5 flex items-center justify-center gap-2 ">
             <Parrafos textoParrafo="No Tienes Cuenta?"/>
-            <a className="text-indigo-600 text-xs sm:text-xs md:text-sm lg:text-base" href="/Registro">Registrate</a>
+            <a className="text-indigo-600 hover:text-indigo-400 text-xs sm:text-xs md:text-sm lg:text-base" href="/Registro">Registrate</a>
             </div>
             <div className="text-center mt-7">
             <Boton textoBoton="LOG IN"/>

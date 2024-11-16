@@ -4,14 +4,14 @@ import Logo from "../../../../assets/Imagenes/Logoo.png"
 
 export function ComponenteNavegacion(){
     return(<>
-    <main >
-        <section className="bg-white h-full w-full rounded-full flex justify-center gap-12">
-            <div className=" w-1/5 h-20 rounded-full">
-                <img className="w-full h-full rounded-full" src={Logo} alt="Logo.png" />
+    <main>
+        <section className="w-full h-full">
+            <div className="w-full h-24">
+                <img className="w-full h-full" src={Logo} alt="" />
             </div>
-            <div className="flex">
-                <LinkNavegacion/>
-            </div>
+        </section>
+        <section className="p-5 w-full h-full ">
+           <LinkNavegacion/>
         </section>
     </main>
     </>)

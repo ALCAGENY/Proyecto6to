@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         ColorFondo: '#cbf0fa',
+        ColorEnfrente: '#e4f9ff'
       },
     },
   },

@@ -1,42 +1,30 @@
 import { ComponenteNavegacion } from "../../UI/Navegacion/ComponenteNavegacion/ComponenteNavegacion";
-import { CardGraficas } from "../CardPaginaDeInicio/CardGraficas";
-import { Contenedor } from "../../UI/Contenedor";
-import { CardDatos } from "../CardPaginaDeInicio/CardDatos";
-import { Titulos } from "../../UI/Texto";
+import { CardRadioGrama } from "../CardRadiograma/CardRadioGrama";
 
 export function ComponentePaginaDeInicio() {
   return (
-    <main className="h-full w-full py-14">
-      {/* Sección de navegación */}
-      <section className="flex justify-center">
-        <nav className="w-4/5">
+    <main className=" h-full w-full flex">
+      <section className="w-1/5 h-screen p-5 animate-fade-right animate-duration-[2000ms]">
+        <nav className="w-full h-full">
           <ComponenteNavegacion />
         </nav>
       </section>
 
-      {/* Sección de contenido principal */}
-      <section className="flex justify-center items-center mt-10">
-        <Contenedor>
-          <section className="bg-white p-10">
-            <div className="text-center">
-              <Titulos textoTitulo="Datos De Monitoreo" />
-            </div>
+      <section className="w-4/5 h-screen p-5">
+        <fieldset className="w-full h-full">
+          <div className="bg-white w-full h-44"></div>
 
-            <div className="flex">
-              {/* Tarjetas de Datos */}
-              <fieldset className="w-1/4 p-5 space-y-4">
-                <CardDatos />
-                <CardDatos />
-                <CardDatos />
-              </fieldset>
+          <section className="mt-4 flex ">
+            <fieldset className="w-2/5">
+              <CardRadioGrama />
+            </fieldset>
+            <div className="w-1/5"></div>
 
-              {/* Tarjetas de Gráficas */}
-              <fieldset className="bg-red-700  w-full p-5 flex gap-x-16 gap-y-5 flex-wrap">
-                <CardGraficas />
-              </fieldset>   
-            </div>
+            <fieldset className="w-2/5">
+              <CardRadioGrama />
+            </fieldset>
           </section>
-        </Contenedor>
+        </fieldset>
       </section>
     </main>
   );

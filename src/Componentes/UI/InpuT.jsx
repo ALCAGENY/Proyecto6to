@@ -8,7 +8,7 @@ export function InpuT(props) {
       value={value}
       onChange={onChange}
       name={name}
-      className={`bg-ColorFondo bg-opacity-70 w-full sm:p-1 md:p-2 rounded-full mt-2 ${className} text-sm sm:text-base md:text-lg`}
+      className={`bg-ColorFondo bg-opacity-70 w-full sm:p-1 md:p-2 rounded-full mt-2 ${className} text-sm sm:text-base md:text-lg transform transition-transform duration-500 hover:scale-105`}
     />
   );
 }

@@ -6,6 +6,7 @@ import { ComponentePaginaDeInicio } from "./Componentes/PaginaDeInicio/Component
 
 
 
+
 const router = createBrowserRouter([
   {
     path: '/',
