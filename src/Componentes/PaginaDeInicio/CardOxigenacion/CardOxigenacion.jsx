@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { createChart } from "lightweight-charts";
 
-export function CardRadioGrama() {
+export function CardOxigenacion () {
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
   const heartbeatSeriesRef = useRef(null);
-  const baseValue = 60;
+  const baseValue = 90;
   const maxValue = 110;
-  const minValue = 40;
+  const minValue = 85;
 
   // Generate initial data for the cardiogram
   const generateInitialData = (numberOfPoints = 50) => {
@@ -44,8 +44,8 @@ export function CardRadioGrama() {
         background: { type: "solid", color: "#FFFFFF" },
       },
       grid: {
-        vertLines: { color: "#e5e5e5" },
-        horzLines: { color: "#e5e5e5" },
+        vertLines: { color: "white" },
+        horzLines: { color: "white" },
       },
       crosshair: {
         vertLine: {
@@ -61,7 +61,7 @@ export function CardRadioGrama() {
     chartRef.current = chart;
 
     const heartbeatSeries = chart.addLineSeries({
-      color: "rgb(225, 87, 90)",
+        color: "rgb(34, 193, 34)",  // Color verde
       lineWidth: 2,
       crossHairMarkerVisible: false, // Desactiva el marcador del crosshair
     });
