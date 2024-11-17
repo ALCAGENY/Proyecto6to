@@ -3,6 +3,7 @@ import { ComponenteRegistro } from "./Componentes/Registro/ComponenteRegistro/Co
 import { ComponenteRegistroPaciente } from "./Componentes/RegistroPaciente/ComponenteRegistroPaciente/ComponenteRegistroPaciente";
 import { ComponenteSesion } from "./Componentes/InicioDeSesion/ComponenteSesion/ComponenteSesion";
 import { ComponentePaginaDeInicio } from "./Componentes/PaginaDeInicio/ComponentePaginaDeInicio/ComponentePaginaDeInicio";
+import { ComponenteDatosPaciente } from "./Componentes/DatosPaciente/ComponenteDatosPaciente/ComponenteDatosPaciente";
 
 
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/Inicio',
     element: <ComponentePaginaDeInicio/>
+  },
+  {
+    path: '/DatosPaciente',
+    element: <ComponenteDatosPaciente/>
   }
 
  

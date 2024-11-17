@@ -1,8 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartBar, faUser, faUserMd, faHistory, faBook } from "@fortawesome/free-solid-svg-icons";
 import { Boton } from "../../Boton";
+import { useNavigate } from "react-router-dom";
 
 export function LinkNavegacion() {
+
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate("/")
+    }
+    
     return (
         <>
             <section className="">
@@ -44,7 +52,7 @@ export function LinkNavegacion() {
                         </a>
                     </li>
                     <div className="mt-8 text-center">
-                        <Boton className="bg-white hover:bg-gray-100" textoBoton="Cerrar Sesion" />
+                        <Boton className="bg-white hover:bg-gray-100" textoBoton="Cerrar Sesion" onClick={handleNavigate}/>
                     </div>
                 </ul>
             </section>
