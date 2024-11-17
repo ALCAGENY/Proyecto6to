@@ -1,5 +1,6 @@
 import { ComponenteNavegacion } from "../../UI/Navegacion/ComponenteNavegacion/ComponenteNavegacion"
-import { VisualizacionDatosPaciente } from "../VisualizacionDatosPaciente/VisualizacionDatosPaciente"
+import { FormularioDatosPaciente } from "../FormularioDatosPaciente/FormularioDatosPaciente"
+import { FormularioDatosFamiliar } from "../FormularioDatosFamiliar/FormularioDatosFamiliar"
 
 export function ComponenteDatosPaciente(){
     return(<>
@@ -16,17 +17,19 @@ export function ComponenteDatosPaciente(){
         <fieldset className="w-full animate-fade animate-duration-[3000ms]">
                 Datos Paciente
             </fieldset>
+            <div className="w-px bg-gray-300 mx-4"></div>
             <fieldset className=" bg-white w-full animate-fade animate-duration-[3000ms]">
                 Datos Farmiliar
             </fieldset>
         </section>
         
-        <section className="mt-10 w-full h-4/5 flex animate-fade animate-duration-[3000ms]">
+        <section className="bg-white mt-10 p-5 w-full h-4/5 flex animate-fade animate-duration-[3000ms]">
         <fieldset className="bg-white w-full animate-fade animate-duration-[3000ms]">
-                <VisualizacionDatosPaciente/>
+                <FormularioDatosPaciente/>
             </fieldset>
+            <div className="w-px bg-gray-300 mx-4"></div>
             <fieldset className=" bg-white w-full animate-fade animate-duration-[3000ms]">
-                Datos Farmiliar
+                <FormularioDatosFamiliar/>
             </fieldset>
         </section>
       </fieldset>
