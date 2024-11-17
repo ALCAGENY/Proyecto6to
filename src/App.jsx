@@ -4,6 +4,7 @@ import { ComponenteRegistroPaciente } from "./Componentes/RegistroPaciente/Compo
 import { ComponenteSesion } from "./Componentes/InicioDeSesion/ComponenteSesion/ComponenteSesion";
 import { ComponentePaginaDeInicio } from "./Componentes/PaginaDeInicio/ComponentePaginaDeInicio/ComponentePaginaDeInicio";
 import { ComponenteDatosPaciente } from "./Componentes/DatosPaciente/ComponenteDatosPaciente/ComponenteDatosPaciente";
+import { EditarDatosPaciente } from "./Componentes/DatosPaciente/EditarDatosPaciente/EditarDatosPaciente";
 
 
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/DatosPaciente',
     element: <ComponenteDatosPaciente/>
+  },
+  {
+    path: '/EditarDatosPaciente',
+    element: <EditarDatosPaciente />
   }
 
  
