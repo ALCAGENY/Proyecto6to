@@ -7,10 +7,14 @@ import { useNavigate } from "react-router-dom";
 
 export function ComponenteDatosPaciente() {
 
-    const navigate = useNavigate ()
+    const navigate = useNavigate ();
 
-    const handleNavigate = () => {
+    const handleEditarDatosPaciente = () => {
       navigate("/EditarDatosPaciente")
+    }
+
+    const handleEditarDatosFamiliar = () => {
+      navigate("/EditarDatosFamiliar")
     }
 
   return (
@@ -28,7 +32,7 @@ export function ComponenteDatosPaciente() {
               <fieldset className="w-full flex items-center justify-center animate-fade animate-duration-[3000ms]">
                 <FontAwesomeIcon icon={faUser} className="mr-2" />
                 Datos Paciente
-                <button className="ml-3 text-blue-500 hover:text-blue-700 transform transition-transform duration-400 hover:scale-105" onClick={handleNavigate}>
+                <button className="ml-3 text-blue-500 hover:text-blue-700 transform transition-transform duration-400 hover:scale-105" onClick={handleEditarDatosPaciente}>
                   <FontAwesomeIcon icon={faEdit} className="ml-1" />
                 Editar
                 </button>
@@ -37,7 +41,7 @@ export function ComponenteDatosPaciente() {
               <fieldset className="w-full flex items-center justify-center bg-white animate-fade animate-duration-[3000ms]">
                 <FontAwesomeIcon icon={faUser} className="mr-2" />
                 Datos Familiar
-                <button className="ml-3 text-blue-500 hover:text-blue-700 transform transition-transform duration-400 hover:scale-105">
+                <button className="ml-3 text-blue-500 hover:text-blue-700 transform transition-transform duration-400 hover:scale-105" onClick={handleEditarDatosFamiliar}>
                   <FontAwesomeIcon icon={faEdit} className="ml-1 " />
                   Editar
                 </button>
