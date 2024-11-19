@@ -5,37 +5,6 @@ export function CardRadioGrama() {
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
   const heartbeatSeriesRef = useRef(null);
-  const baseValue = 60;
-  const maxValue = 110;
-  const minValue = 40;
-
-  // Generate initial data for the cardiogram
-  const generateInitialData = (numberOfPoints = 50) => {
-    const data = [];
-    const date = new Date(Date.UTC(2022, 0, 1, 12, 0, 0, 0));
-    for (let i = 0; i < numberOfPoints; i++) {
-      data.push({ time: date.getTime() / 1000, value: baseValue });
-      date.setUTCSeconds(date.getUTCSeconds() + 1);
-    }
-    return data;
-  };
-
-  // Update function for real-time cardiogram
-  const addHeartbeatData = () => {
-    const time = new Date().getTime() / 1000;
-    let value = baseValue;
-
-    // Simulate a heartbeat in three stages
-    const rand = Math.random();
-    if (rand < 0.1) {
-      value = maxValue; // High peak
-    } else if (rand < 0.33) {
-      value = minValue; // Low peak
-    }
-
-    // Add new point and shift chart
-    heartbeatSeriesRef.current.update({ time, value });
-  };
 
   useEffect(() => {
     const chartOptions = {
@@ -48,12 +17,8 @@ export function CardRadioGrama() {
         horzLines: { color: "#e5e5e5" },
       },
       crosshair: {
-        vertLine: {
-          visible: false, // Oculta la línea vertical del crosshair
-        },
-        horzLine: {
-          visible: false, // Oculta la línea horizontal del crosshair
-        },
+        vertLine: { visible: false },
+        horzLine: { visible: false },
       },
     };
 
@@ -63,19 +28,35 @@ export function CardRadioGrama() {
     const heartbeatSeries = chart.addLineSeries({
       color: "rgb(225, 87, 90)",
       lineWidth: 2,
-      crossHairMarkerVisible: false, // Desactiva el marcador del crosshair
+      crossHairMarkerVisible: false,
     });
     heartbeatSeriesRef.current = heartbeatSeries;
 
-    // Load initial data
-    const initialData = generateInitialData();
-    heartbeatSeries.setData(initialData);
+    // Función para obtener los datos desde la API
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8081/api/v1/heart-rate/all");
+        const data = await response.json();
+        
+        // Procesa los datos y actualiza el gráfico
+        data.forEach((point) => {
+          const newPoint = {
+            time: new Date(point.createdAt).getTime() / 1000, // Convierte la fecha a timestamp en segundos
+            value: point.ECG,
+          };
+          heartbeatSeriesRef.current.update(newPoint);
+        });
 
-    // Interval to simulate real-time heartbeat
-    const intervalId = setInterval(addHeartbeatData, 450);
+        chart.timeScale().fitContent();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-    chart.timeScale().fitContent();
+    // Llama a la función fetchData cada segundo para actualizar los datos
+    const intervalId = setInterval(fetchData, 1000); // Intervalo de 1 segundo (1000 ms)
 
+    // Limpieza: limpia el intervalo y el gráfico cuando el componente se desmonte
     return () => {
       clearInterval(intervalId);
       chart.remove();
