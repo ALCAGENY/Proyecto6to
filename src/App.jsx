@@ -6,9 +6,9 @@ import { ComponentePaginaDeInicio } from "./Componentes/PaginaDeInicio/Component
 import { ComponenteDatosPaciente } from "./Componentes/DatosPaciente/ComponenteDatosPaciente/ComponenteDatosPaciente";
 import { EditarDatosPaciente } from "./Componentes/DatosPaciente/EditarDatosPaciente/EditarDatosPaciente";
 import { EditarDatosFamiliar } from "./Componentes/DatosPaciente/EditarDatosFamiliar/EditarDatosFamiliar";
-
-
-
+import { ComponenteDatosDoctor } from "./Componentes/DatosDoctor/ComponenteDatosDoctor/ComponenteDatosDoctor";
+import { ComponenteHistorial } from "./Componentes/Historial/ComponenteHistorial";
+Ñ
 
 const router = createBrowserRouter([
   {
@@ -38,6 +38,14 @@ const router = createBrowserRouter([
   {
     path: '/EditarDatosFamiliar',
     element: <EditarDatosFamiliar />
+  },
+  {
+    path: '/DatosDoctor',
+    element: <ComponenteDatosDoctor />
+  },
+  {
+    path: '/Historial',
+    element: <ComponenteHistorial />
   }
 
  

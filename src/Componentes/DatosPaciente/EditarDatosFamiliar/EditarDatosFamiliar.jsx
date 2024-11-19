@@ -21,10 +21,22 @@ export function EditarDatosFamiliar(){
 
         <section className="w-full h-full p-3">
           <main>
-          <div className="text-center">
-        <Titulos textoTitulo="Editar Datos Del Familiar" />
-      </div>
-            <section className="grid grid-cols-2 gap-14 mt-10">
+          <div className=" flex items-center justify-center gap-96">
+                    <div className="text-center">
+                      <Titulos textoTitulo="Editar Datos Del Familiar" />
+                    </div>
+                    <div className="">
+                      <button
+                        className="text-red-600 hover:text-red-300 text-2xl transition duration-300"
+                        aria-label="Cerrar"
+                        onClick={() => {
+                          /* lógica de cierre aquí */
+                        }}
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  </div><section className="grid grid-cols-2 gap-14 mt-10">
             <div>
                 <Parrafos textoParrafo="Nombre" className="text-sm font-medium"/>
                 <InpuT type="text" className="bg-ColorFondo rounded-full p-2 transform transition-transform duration-400 hover:scale-105"/>
