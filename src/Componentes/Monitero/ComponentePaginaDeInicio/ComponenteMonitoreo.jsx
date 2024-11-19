@@ -3,7 +3,7 @@ import { CardRadioGrama } from "../CardRadiograma/CardRadioGrama";
 import CardTemperatura from "../CardTemperatura/CardTemperatura";
 import { CardOxigenacion } from "../CardOxigenacion/CardOxigenacion";
 
-export function ComponentePaginaDeInicio() {
+export function ComponenteMonitoreo() {
   return (
     <main className="h-full w-full flex flex-col md:flex-row">
       <section className="w-full md:w-1/5 h-auto md:h-screen p-5 animate-fade-right animate-duration-[2000ms]">
