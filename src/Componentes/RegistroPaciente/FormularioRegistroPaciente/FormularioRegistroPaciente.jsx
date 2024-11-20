@@ -14,8 +14,12 @@ export function FormularioRegistroPaciente() {
     edad: "",
     peso: "",
     altura: "",
-    estado: "",
+    estado: "Chiapas",  // Valor predeterminado para estado
     municipio: "",
+    nombre: "",          // Campos para datos de localStorage
+    telefono: "",
+    correo: "",
+    contrasena: ""
   });
   const [errors, setErrors] = useState({});
 
@@ -70,20 +74,7 @@ export function FormularioRegistroPaciente() {
 
   const handleGuardarClick = async () => {
     if (validateForm()) {
-      const datos = {
-        nombre: formData.nombre,
-        apellido_p: formData.apellido_p,
-        apellido_m: formData.apellido_m,
-        edad: formData.edad,
-        genero: formData.genero,
-        estado: formData.estado,
-        municipio: formData.municipio,
-        correo: formData.correo,
-        contrasena: formData.contrasena,
-        telefono: formData.telefono,
-        peso: formData.peso,
-        altura: formData.altura,
-      };
+      const datos = { ...formData };
 
       try {
         const response = await fetch("http://localhost:8081/api/v1/auth/register", {
@@ -151,7 +142,7 @@ export function FormularioRegistroPaciente() {
             <div className="relative">
               <Parrafos textoParrafo="Estado" />
               <div className="bg-ColorFondo bg-opacity-70 w-full sm:p-1 md:p-2 rounded-full mt-2 text-sm sm:text-base md:text-lg">
-                Chiapas
+                {formData.estado}
               </div>
             </div>
           </section>
@@ -206,9 +197,7 @@ export function FormularioRegistroPaciente() {
                 className={`border ${errors.municipio ? 'border-red-500' : 'border-none'} bg-ColorFondo bg-opacity-70 w-full sm:p-1 md:p-2 rounded-full mt-2 text-sm sm:text-base md:text-lg transform transition-transform duration-500 hover:scale-105`}
               >
                 <option value="">Seleccione</option>
-                <option value="Suchiapa">Suchiapa</option>
-                <option value="Tuxtla">Tuxtla</option>
-                <option value="San Cristóbal">San Cristóbal</option>
+                <option value="Tuxtla Gutiérrez">Tuxtla Gutiérrez</option>
                 <option value="Tapachula">Tapachula</option>
               </select>
               {errors.municipio && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.municipio}</p>}
@@ -216,12 +205,12 @@ export function FormularioRegistroPaciente() {
           </section>
         </div>
 
-        <div className="text-center mt-4">
-          <Boton onClick={handleGuardarClick} textoBoton="Guardar" />
+        <div className="text-center mt-8">
+          <Boton nombreBoton="Guardar" onClick={handleGuardarClick} />
         </div>
-
-        {isModalOpen && <ModalDatosFamiliar onClose={handleCloseModal} />}
       </section>
+
+      {isModalOpen && <ModalDatosFamiliar isOpen={isModalOpen} onClose={handleCloseModal} />}
     </>
   );
 }

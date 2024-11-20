@@ -65,7 +65,7 @@ export function ComponenteMonitoreo() {
           <section className="px-5 animate-fade animate-duration-[3000ms]">
             <fieldset className="w-full flex flex-col md:flex-row h-auto md:h-2/3 gap-20">
               {/* Card for Cardiogram */}
-              <fieldset className="w-full md:w-1/3 bg-white rounded-full shadow-md p-5 flex flex-col items-center justify-center">
+              <fieldset className="w-full h- md:w-1/3 bg-white rounded-full shadow-md p-5 flex flex-col items-center justify-center">
                 <div className="text-red-500 text-5xl animate-pulse">❤️</div>
                 <p className="text-lg mt-2 font-bold">Datos Cardiograma</p>
                 <span className="text-3xl font-bold">72 BPM</span>
