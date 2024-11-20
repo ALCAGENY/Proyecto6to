@@ -7,6 +7,7 @@ import { CardOxigenacion } from "../CardOxigenacion/CardOxigenacion";
 export function ComponenteMonitoreo() {
   const [temperature, setTemperature] = useState(0);
   const [oximeterValue, setOximeterValue] = useState(0); // Estado para el valor de oxigenación
+  const [bpmValue, setBpmValue] = useState(0); // Estado para almacenar el valor de BPM
 
   // Aquí va el código de obtención de temperatura (ya lo tienes)
   useEffect(() => {
@@ -52,6 +53,28 @@ export function ComponenteMonitoreo() {
     return () => clearInterval(interval);
   }, []);
 
+  // Aquí obtienes el valor de BPM desde el CardRadioGrama
+  useEffect(() => {
+    const fetchBpmData = async () => {
+      try {
+        const response = await fetch("http://localhost:8081/api/v1/heart-rate/all");
+        const data = await response.json();
+        if (data.length > 0) {
+          const latestBpmValue = parseFloat(data[data.length - 1].BPM);
+          setBpmValue(latestBpmValue); // Actualiza el valor de BPM
+        } else {
+          console.error("No se recibieron datos de BPM.");
+        }
+      } catch (error) {
+        console.error("Error al obtener los datos de BPM:", error);
+      }
+    };
+
+    fetchBpmData();
+    const interval = setInterval(fetchBpmData, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="h-full w-full flex flex-col md:flex-row">
       <section className="w-full md:w-1/5 h-auto md:h-screen p-5 animate-fade-right animate-duration-[2000ms]">
@@ -68,7 +91,7 @@ export function ComponenteMonitoreo() {
               <fieldset className="w-full h- md:w-1/3 bg-white rounded-full shadow-md p-5 flex flex-col items-center justify-center">
                 <div className="text-red-500 text-5xl animate-pulse">❤️</div>
                 <p className="text-lg mt-2 font-bold">Datos Cardiograma</p>
-                <span className="text-3xl font-bold">72 BPM</span>
+                <span className="text-3xl font-bold">{bpmValue} BPM</span> {/* Aquí pasas el BPM */}
               </fieldset>
 
               {/* Card for Temperature */}
@@ -90,10 +113,10 @@ export function ComponenteMonitoreo() {
           {/* Additional section with Cards */}
           <section className="flex flex-col md:flex-row h-auto md:h-2/3 mt-9 gap-5 animate-fade animate-duration-[3000ms]">
             <fieldset className="w-full md:w-1/3">
-              <CardRadioGrama />
+              <CardRadioGrama bpmValue={bpmValue} /> {/* Pasa el BPM a CardRadioGrama */}
             </fieldset>
             <fieldset className="w-full md:w-1/3 flex items-center justify-center bg-white">
-              <CardTemperatura temperature={temperature} /> {/* Pasa la temperatura aca tambien sale el modal pero sale abajo de las demas cosas quiero que este arriba ahora si que no quiero que cambies nada solo arregla eso porfa*/}
+              <CardTemperatura temperature={temperature} /> {/* Pasa la temperatura aca */}
             </fieldset>
             <fieldset className="w-full md:w-1/3">
               <CardOxigenacion oximeterValue={oximeterValue} /> {/* Pasa el valor de oxigenación */}
