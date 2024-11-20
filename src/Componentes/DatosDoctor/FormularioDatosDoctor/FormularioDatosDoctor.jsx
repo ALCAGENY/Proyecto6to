@@ -60,28 +60,28 @@ export function FormularioDatosDactor() {
           <div className="text-center">
             <Titulos textoTitulo="Datos Del Doctor" />
           </div>
-          <section className="grid grid-cols-2 gap-6 mb-4 mt-24">
+          <section className="grid grid-cols-2 gap-6 mb-4 mt-20">
             <div>
               <p className="text-sm font-medium">Nombre</p>
-              <div className="bg-ColorFondo rounded-full p-5 text-center transform transition-transform duration-400 hover:scale-105">
+              <div className="bg-ColorFondo rounded-full p-2 text-center transform transition-transform duration-400 hover:scale-105">
                 {doctorData.nombre || "Cargando..."}
               </div>
             </div>
             <div>
               <p className="text-sm font-medium">Especialidad</p>
-              <div className="bg-ColorFondo rounded-full p-5 text-center transform transition-transform duration-400 hover:scale-105">
+              <div className="bg-ColorFondo rounded-full p-2 text-center transform transition-transform duration-400 hover:scale-105">
                 {doctorData.especialidad || "Cargando..."}
               </div>
             </div>
             <div>
               <p className="text-sm font-medium">Teléfono</p>
-              <div className="bg-ColorFondo rounded-full p-5 text-center transform transition-transform duration-400 hover:scale-105">
+              <div className="bg-ColorFondo rounded-full p-2 text-center transform transition-transform duration-400 hover:scale-105">
                 {doctorData.telefono || "Cargando..."}
               </div>
             </div>
             <div>
               <p className="text-sm font-medium">Correo</p>
-              <div className="bg-ColorFondo rounded-full p-5 text-center transform transition-transform duration-400 hover:scale-105">
+              <div className="bg-ColorFondo rounded-full p-2 text-center transform transition-transform duration-400 hover:scale-105">
                 {doctorData.correo || "Cargando..."}
               </div>
             </div>

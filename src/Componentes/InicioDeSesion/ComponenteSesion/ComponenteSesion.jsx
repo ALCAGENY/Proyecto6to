@@ -1,5 +1,6 @@
 import { Contenedor } from "../../UI/Contenedor";
 import { FormularioSesion } from "../FormularioSesion/FormularioSesion";
+import { Carrusel } from "../../UI/Carrusel";
 
 export function ComponenteSesion() {
   return (
@@ -7,7 +8,9 @@ export function ComponenteSesion() {
       <Contenedor>
         <section className="bg-white h-full w-full flex flex-col md:flex-row rounded-3xl overflow-hidden shadow-lg">
             
-          <fieldset className="bg-indigo-500 h-1/2 md:h-full md:w-1/2 p-4"></fieldset>
+          <fieldset className="h-1/2 md:h-full md:w-1/2 ">
+          <Carrusel/>
+          </fieldset>
 
           
           <fieldset className="bg-ColorFondo h-1/2 md:h-full md:w-1/2 p-6 md:p-10 flex justify-center items-center">

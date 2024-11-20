@@ -1,5 +1,6 @@
 import { Contenedor } from "../../UI/Contenedor";
 import { FormularioRegistro } from "../FormularioRegistro/FormularioRegistro";
+import { Carrusel } from "../../UI/Carrusel";
 
 export function ComponenteRegistro() {
   return (
@@ -13,7 +14,9 @@ export function ComponenteRegistro() {
             </div>
           </fieldset>
 
-          <fieldset className="bg-indigo-500 h-1/2 md:h-full md:w-1/2 p-4"></fieldset>
+          <fieldset className="h-1/2 md:h-full md:w-1/2">
+          <Carrusel/>
+          </fieldset>
         </section>
       </Contenedor>
     </main>
