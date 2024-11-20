@@ -64,11 +64,12 @@ export function FormularioSesion() {
       const data = await response.json();
       console.log('Login exitoso', data);
 
-      // Guardar el token o la información de la respuesta según sea necesario
-      localStorage.setItem('token', data.token);  // Ejemplo si la respuesta tiene un token
+      // Guardar el token en el localStorage
+      localStorage.setItem('token', data.token);  // Guardamos el token para futuras peticiones
+      console.log('Token guardado en localStorage:', data.token); // Consola el token guardado
 
       // Redirigir a la página de inicio
-      navigate('/Inicio');
+      navigate('/Monitoreos');
     } catch (error) {
       console.error(error);
       setError('Credenciales incorrectas o problema en la API');

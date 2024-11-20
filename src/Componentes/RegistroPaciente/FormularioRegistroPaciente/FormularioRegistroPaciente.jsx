@@ -14,9 +14,9 @@ export function FormularioRegistroPaciente() {
     edad: "",
     peso: "",
     altura: "",
-    estado: "Chiapas",  // Valor predeterminado para estado
+    estado: "Chiapas",  
     municipio: "",
-    nombre: "",          // Campos para datos de localStorage
+    nombre: "",          
     telefono: "",
     correo: "",
     contrasena: ""
@@ -197,7 +197,9 @@ export function FormularioRegistroPaciente() {
                 className={`border ${errors.municipio ? 'border-red-500' : 'border-none'} bg-ColorFondo bg-opacity-70 w-full sm:p-1 md:p-2 rounded-full mt-2 text-sm sm:text-base md:text-lg transform transition-transform duration-500 hover:scale-105`}
               >
                 <option value="">Seleccione</option>
+                <option value="Suchiapa">Suchiapa</option>
                 <option value="Tuxtla Gutiérrez">Tuxtla Gutiérrez</option>
+                <option value="San Cristóbal ">San Cristóbal </option>
                 <option value="Tapachula">Tapachula</option>
               </select>
               {errors.municipio && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.municipio}</p>}
@@ -206,7 +208,7 @@ export function FormularioRegistroPaciente() {
         </div>
 
         <div className="text-center mt-8">
-          <Boton nombreBoton="Guardar" onClick={handleGuardarClick} />
+          <Boton textoBoton="Guardar" onClick={handleGuardarClick} />
         </div>
       </section>
 
