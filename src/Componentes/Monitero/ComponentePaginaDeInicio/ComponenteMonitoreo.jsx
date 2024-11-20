@@ -93,7 +93,7 @@ export function ComponenteMonitoreo() {
               <CardRadioGrama />
             </fieldset>
             <fieldset className="w-full md:w-1/3 flex items-center justify-center bg-white">
-              <CardTemperatura temperature={temperature} /> {/* Pasa la temperatura */}
+              <CardTemperatura temperature={temperature} /> {/* Pasa la temperatura aca tambien sale el modal pero sale abajo de las demas cosas quiero que este arriba ahora si que no quiero que cambies nada solo arregla eso porfa*/}
             </fieldset>
             <fieldset className="w-full md:w-1/3">
               <CardOxigenacion oximeterValue={oximeterValue} /> {/* Pasa el valor de oxigenación */}
