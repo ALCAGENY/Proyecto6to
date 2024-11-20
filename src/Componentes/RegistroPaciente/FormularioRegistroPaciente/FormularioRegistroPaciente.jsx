@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Titulos } from "../../UI/Texto";
 import { Parrafos } from "../../UI/Texto";
 import { InpuT } from "../../UI/InpuT";
+import { ModalExito } from "../../UI/Modal/ModalExito";
 import { Boton } from "../../UI/Boton";
-import { ModalDatosFamiliar } from "../../UI/Modal/ModalDatosFamiliar";
 
 export function FormularioRegistroPaciente() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -212,7 +212,7 @@ export function FormularioRegistroPaciente() {
         </div>
       </section>
 
-      {isModalOpen && <ModalDatosFamiliar isOpen={isModalOpen} onClose={handleCloseModal} />}
+      {isModalOpen && <ModalExito isOpen={isModalOpen} onClose={handleCloseModal} />}
     </>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { InpuT } from "../InpuT";
 import { Boton } from "../Boton";
-import { ModalVerificado } from "./ModalVerificado"; {/* Este es el modal que quieres mostrar */}
+import { ModalExito } from "./ModalExito"; 
 
-export function ModalDatosFamiliar() {
+export function ModalCrearDatosFamiliar() {
   const [formData, setFormData] = useState({
     nombre: "",
     apellido_p: "",
@@ -14,6 +14,9 @@ export function ModalDatosFamiliar() {
   });
   const [error, setError] = useState({});
   const [modalVisible, setModalVisible] = useState(false); // Estado para controlar la visibilidad del modal
+
+  // Obtener el token del localStorage
+  const token = localStorage.getItem('token');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,10 +30,8 @@ export function ModalDatosFamiliar() {
     const newErrors = {};
 
     if (!formData.nombre) newErrors.nombre = "El nombre es obligatorio.";
-    if (!formData.apellido_p)
-      newErrors.apellido_p = "El apellido paterno es obligatorio.";
-    if (!formData.apellido_m)
-      newErrors.apellido_m = "El apellido materno es obligatorio.";
+    if (!formData.apellido_p) newErrors.apellido_p = "El apellido paterno es obligatorio.";
+    if (!formData.apellido_m) newErrors.apellido_m = "El apellido materno es obligatorio.";
     if (!formData.telefono) newErrors.telefono = "El teléfono es obligatorio.";
     else if (!/^\d{10}$/.test(formData.telefono))
       newErrors.telefono = "El teléfono debe tener 10 dígitos.";
@@ -49,10 +50,17 @@ export function ModalDatosFamiliar() {
   const handleGuardarClick = async () => {
     if (validateForm()) {
       try {
+        // Verificar si el token está presente antes de hacer la solicitud
+        if (!token) {
+          console.error("No se ha encontrado un token de autenticación.");
+          return;
+        }
+
         const response = await fetch("http://localhost:8081/api/v1/emergency-contacts/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`, // Incluir el token en la cabecera
           },
           body: JSON.stringify(formData),
         });
@@ -193,7 +201,7 @@ export function ModalDatosFamiliar() {
 
       {/* Modal que se muestra cuando los datos se guardan correctamente */}
       {modalVisible && (
-        <ModalVerificado onClose={handleCloseModal} />
+        <ModalExito onClose={handleCloseModal} />
       )}
     </>
   );
