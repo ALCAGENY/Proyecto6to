@@ -64,9 +64,11 @@ export function FormularioSesion() {
       const data = await response.json();
       console.log('Login exitoso', data);
 
-      // Guardar el token en el localStorage
-      localStorage.setItem('token', data.token);  // Guardamos el token para futuras peticiones
-      console.log('Token guardado en localStorage:', data.token); // Consola el token guardado
+      // Guardar el token y el id en el localStorage
+      localStorage.setItem('token', data.token);  // Guardamos el token
+      localStorage.setItem('userId', data.id);    // Guardamos el id del usuario
+      console.log('Token guardado en localStorage:', data.token);
+      console.log('ID guardado en localStorage:', data.id);  // Consola el id guardado
 
       // Redirigir a la página de inicio
       navigate('/Monitoreos');

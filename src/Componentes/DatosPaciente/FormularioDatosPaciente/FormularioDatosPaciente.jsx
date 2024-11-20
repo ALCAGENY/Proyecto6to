@@ -8,13 +8,15 @@ export function FormularioDatosPaciente() {
     // Función para obtener los datos del paciente
     const fetchPatientData = async () => {
       const token = localStorage.getItem('token'); // Recupera el token de localStorage
-      if (!token) {
-        setError("No se encontró un token de autenticación");
+      const userId = localStorage.getItem('userId'); // Recupera el ID del usuario (userId) de localStorage
+
+      if (!token || !userId) {
+        setError("No se encontró un token de autenticación o ID de usuario");
         return;
       }
 
       try {
-        const response = await fetch('http://localhost:8081/api/v1/user/4', {
+        const response = await fetch(`http://localhost:8081/api/v1/user/${userId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
