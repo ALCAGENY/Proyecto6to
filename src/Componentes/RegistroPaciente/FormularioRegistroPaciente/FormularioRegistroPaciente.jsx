@@ -42,6 +42,14 @@ export function FormularioRegistroPaciente() {
       ...formData,
       [name]: value,
     });
+
+    // Eliminar el error cuando el usuario empieza a escribir
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
   };
 
   const validateForm = () => {
@@ -112,7 +120,7 @@ export function FormularioRegistroPaciente() {
                 onChange={handleInputChange}
                 className={`border ${errors.apellido_p ? 'border-red-500' : 'border-none'} p-2 rounded-full`}
               />
-              {errors.apellido_p && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.apellido_p}</p>}
+              {errors.apellido_p && <p className="text-red-500 text-xs absolute bottom-1 left-2">{errors.apellido_p}</p>}
             </div>
 
             <div className="relative">
@@ -124,7 +132,7 @@ export function FormularioRegistroPaciente() {
                 onChange={handleInputChange}
                 className={`border ${errors.edad ? 'border-red-500' : 'border-none'} p-2 rounded-full`}
               />
-              {errors.edad && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.edad}</p>}
+              {errors.edad && <p className="text-red-500 text-xs absolute bottom-1 left-2">{errors.edad}</p>}
             </div>
 
             <div className="relative">
@@ -136,7 +144,7 @@ export function FormularioRegistroPaciente() {
                 onChange={handleInputChange}
                 className={`border ${errors.altura ? 'border-red-500' : 'border-none'} p-2 rounded-full`}
               />
-              {errors.altura && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.altura}</p>}
+              {errors.altura && <p className="text-red-500 text-xs absolute bottom-1 left-2">{errors.altura}</p>}
             </div>
 
             <div className="relative">
@@ -157,7 +165,7 @@ export function FormularioRegistroPaciente() {
                 onChange={handleInputChange}
                 className={`border ${errors.apellido_m ? 'border-red-500' : 'border-none'} p-2 rounded-full`}
               />
-              {errors.apellido_m && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.apellido_m}</p>}
+              {errors.apellido_m && <p className="text-red-500 text-xs absolute bottom-1 left-2">{errors.apellido_m}</p>}
             </div>
 
             <div className="relative">
@@ -173,7 +181,7 @@ export function FormularioRegistroPaciente() {
                 <option value="Mujer">Mujer</option>
                 <option value="Prefiero no decirlo">Prefiero no decirlo</option>
               </select>
-              {errors.genero && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.genero}</p>}
+              {errors.genero && <p className="text-red-500 text-xs absolute left-2">{errors.genero}</p>}
             </div>
 
             <div className="relative">
@@ -185,7 +193,7 @@ export function FormularioRegistroPaciente() {
                 onChange={handleInputChange}
                 className={`border ${errors.peso ? 'border-red-500' : 'border-none'} p-2 rounded-full`}
               />
-              {errors.peso && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.peso}</p>}
+              {errors.peso && <p className="text-red-500 text-xs absolute bottom-1 left-2">{errors.peso}</p>}
             </div>
 
             <div className="relative">
@@ -200,19 +208,21 @@ export function FormularioRegistroPaciente() {
                 <option value="Suchiapa">Suchiapa</option>
                 <option value="Tuxtla Gutiérrez">Tuxtla Gutiérrez</option>
                 <option value="San Cristóbal ">San Cristóbal </option>
-                <option value="Tapachula">Tapachula</option>
               </select>
-              {errors.municipio && <p className="text-red-500 text-sm absolute bottom-2 left-2">{errors.municipio}</p>}
+              {errors.municipio && <p className="text-red-500 text-xs absolute left-2">{errors.municipio}</p>}
             </div>
           </section>
         </div>
 
-        <div className="text-center mt-8">
-          <Boton textoBoton="Guardar" onClick={handleGuardarClick} />
+        <div className="flex justify-center">
+          <Boton
+            textoBoton="Guardar"
+            onClick={handleGuardarClick}
+          />
         </div>
       </section>
 
-      {isModalOpen && <ModalExito isOpen={isModalOpen} onClose={handleCloseModal} />}
+      {isModalOpen && <ModalExito onClose={handleCloseModal} />}
     </>
   );
 }

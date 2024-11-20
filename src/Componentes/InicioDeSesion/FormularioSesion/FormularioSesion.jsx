@@ -74,7 +74,7 @@ export function FormularioSesion() {
       navigate('/Monitoreos');
     } catch (error) {
       console.error(error);
-      setError('Credenciales incorrectas o problema en la API');
+      setError('Datos Incorrectos');
     }
   };
 

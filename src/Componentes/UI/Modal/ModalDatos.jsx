@@ -4,14 +4,13 @@ import DoctorModal from "../../../assets/Imagenes/DoctorModal.png";
 import { Parrafos } from "../Texto";
 import { Boton } from "../Boton";
 
-export function ModalDatos() {
+export function ModalDatoss() {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate("/RegistroPaciente");
   };
 
-  
   return (
     <main className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4" aria-modal="true" role="dialog">
       <section className="bg-ColorFondo h-3/4 w-4/12 rounded-3xl flex justify-center items-center">
@@ -27,6 +26,7 @@ export function ModalDatos() {
               <Boton
                 textoBoton="Agregar"
                 onClick={handleNavigate}
+                className="btn-fondoFuerte"
               />
             </div>
           </fieldset>

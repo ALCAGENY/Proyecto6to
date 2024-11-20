@@ -8,6 +8,7 @@ import { EditarDatosPaciente } from "./Componentes/DatosPaciente/EditarDatosPaci
 import { EditarDatosFamiliar } from "./Componentes/DatosPaciente/EditarDatosFamiliar/EditarDatosFamiliar";
 import { ComponenteDatosDoctor } from "./Componentes/DatosDoctor/ComponenteDatosDoctor/ComponenteDatosDoctor";
 import { ComponenteHistorial } from "./Componentes/Historial/ComponenteHistorial";
+import { ModalRe } from "./Componentes/UI/Modal/ModalRe";
 
 
 const router = createBrowserRouter([
@@ -46,7 +47,12 @@ const router = createBrowserRouter([
   {
     path: '/Historial',
     element: <ComponenteHistorial />
+  },
+  {
+    path: '/ModalVerificado',
+    element: <ModalRe/>
   }
+  
 
  
 ]);

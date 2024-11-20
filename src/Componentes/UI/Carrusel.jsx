@@ -8,10 +8,10 @@ import Carrusel6 from "../../assets/Imagenes/Carrusel6.jpeg.jpg";
 
 export function Carrusel() {
   return (
-    <main className="relative w-full h-full  overflow-hidden">
-      <div className="w-full h-full relative">
-        <div className="absolute inset-0 flex animate-slide-carousel">
-        <img
+    <main className="relative w-full h-full overflow-hidden">
+      <div className="w-full h-full flex flex-nowrap">
+        <div className="w-full h-full flex animate-slide-carousel">
+          <img
             src={Carrusel0}
             alt="Carrusel 0"
             className="w-full object-cover h-full flex-shrink-0"
