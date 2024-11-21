@@ -11,7 +11,7 @@ export function ComponenteDatosProbabilisticos() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://3.210.148.31:8000/temperature_summary");
+        const response = await axios.get("https://servicio-phyton.duckdns.org/temperature_summary");
         setTemperatureData((prevData) => [response.data, ...prevData]); // Agrega nuevos datos al inicio
       } catch (err) {
         setError(err.message);
