@@ -135,6 +135,7 @@ export function FormularioRegistroPaciente() {
               {errors.edad && <p className="text-red-500 text-xs absolute bottom-1 left-2">{errors.edad}</p>}
             </div>
 
+
             <div className="relative">
               <Parrafos textoParrafo="Altura CM" />
               <InpuT
