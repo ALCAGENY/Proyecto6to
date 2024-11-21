@@ -3,20 +3,39 @@ import axios from "axios";
 import { ComponenteNavegacion } from "../../UI/Navegacion/ComponenteNavegacion/ComponenteNavegacion";
 
 export function ComponenteDatosProbabilisticos() {
-  const [temperatureData, setTemperatureData] = useState(null);
+  const [temperatureData, setTemperatureData] = useState([]); // Almacena todos los datos
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1); // Página actual
+  const itemsPerPage = 10; // Número de tarjetas por página
 
   useEffect(() => {
-    // Obtener los datos desde la API con Axios
-    axios
-      .get("http://localhost:8000/temperature_summary")
-      .then((response) => {
-        setTemperatureData(response.data);
-      })
-      .catch((err) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/temperature_summary");
+        setTemperatureData((prevData) => [response.data, ...prevData]); // Agrega nuevos datos al inicio
+      } catch (err) {
         setError(err.message);
-      });
+      }
+    };
+
+    const interval = setInterval(fetchData, 5000); // Llama a la API cada 5 segundos
+    return () => clearInterval(interval); // Limpia el intervalo al desmontar
   }, []);
+
+  // Calcular los datos de la página actual
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentData = temperatureData.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Total de páginas
+  const totalPages = Math.ceil(temperatureData.length / itemsPerPage);
+
+  // Cambiar de página
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   return (
     <>
@@ -28,45 +47,48 @@ export function ComponenteDatosProbabilisticos() {
           </nav>
         </section>
 
-        {/* Sección de tabla */}
+        {/* Sección de contenido */}
         <section className="w-full md:w-4/5 h-auto md:h-screen p-10">
           <fieldset className="w-full h-full">
-            {/* Encabezado de la tabla */}
+            {/* Encabezado */}
             <section className="bg-white px-5 flex text-center p-4 w-full h-20 animate-fade animate-duration-[3000ms]">
               <fieldset className="w-full flex items-center justify-center animate-fade animate-duration-[3000ms]">
                 <h1 className="text-xl font-bold">Resumen de Temperatura</h1>
               </fieldset>
             </section>
 
-            {/* Cuerpo de la tabla con la información */}
-            <section className="bg-white mt-10 p-5 w-full h-4/5 flex animate-fade animate-duration-[3000ms] overflow-y-auto">
+            {/* Cuerpo */}
+            <section className="bg-white mt-10 p-5 w-full h-4/5 flex flex-col animate-fade animate-duration-[3000ms] overflow-y-auto">
               <fieldset className="bg-white w-full animate-fade animate-duration-[3000ms]">
-                {/* Mostrar la card */}
                 {error && (
                   <p className="text-red-500 text-center">
                     Error: {error}
                   </p>
                 )}
-                {temperatureData ? (
-                  <div className="p-6 bg-gray-100 rounded-lg shadow-md">
-                    <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                      Estado: {temperatureData.status}
-                    </h2>
-                    <p className="text-gray-600">
-                      <strong>Promedio:</strong> {temperatureData.average_temperature}°C
-                    </p>
-                    <p className="text-gray-600">
-                      <strong>Moda:</strong> {temperatureData.mode_temperature}°C
-                    </p>
-                    <p className="text-gray-600">
-                      <strong>Inicio:</strong> {temperatureData.start_time}
-                    </p>
-                    <p className="text-gray-600">
-                      <strong>Fin:</strong> {temperatureData.end_time}
-                    </p>
-                    <p className="text-gray-800 font-bold mt-4">
-                      {temperatureData.message}
-                    </p>
+                {currentData.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+                    {currentData.map((data, index) => (
+                      <div
+                        key={index}
+                        className="p-6 bg-ColorFondo rounded-lg shadow-md"
+                      >
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                          Estado: {data.status}
+                        </h2>
+                        <p className="">
+                          <strong>Promedio:</strong> {data.average_temperature}°C
+                        </p>
+                        <p className="text-gray-600">
+                          <strong>Inicio:</strong> {data.start_time}
+                        </p>
+                        <p className="text-gray-600">
+                          <strong>Fin:</strong> {data.end_time}
+                        </p>
+                        <p className="font-bold mt-4">
+                          {data.message}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 ) : (
                   !error && (
@@ -75,6 +97,35 @@ export function ComponenteDatosProbabilisticos() {
                     </p>
                   )
                 )}
+
+                {/* Paginación */}
+                <div className="flex justify-center items-center mt-6">
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={`px-4 py-2 mx-1 rounded ${
+                      currentPage === 1
+                        ? "bg-gray-300 cursor-not-allowed"
+                        : "bg-ColorFondo hover:bg-opacity-70"
+                    }`}
+                  >
+                    Anterior
+                  </button>
+                  <span className="mx-2 text-gray-700">
+                    Página {currentPage} de {totalPages}
+                  </span>
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={`px-4 py-2 mx-1 rounded ${
+                      currentPage === totalPages
+                        ? "bg-ColorFondo cursor-not-allowed"
+                        : "bg-ColorFondo hover:bg-opacity-70"
+                    }`}
+                  >
+                    Siguiente
+                  </button>
+                </div>
               </fieldset>
             </section>
           </fieldset>
