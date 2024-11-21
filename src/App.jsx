@@ -7,6 +7,8 @@ import { ComponenteDatosPaciente } from "./Componentes/DatosPaciente/ComponenteD
 import { EditarDatosPaciente } from "./Componentes/DatosPaciente/EditarDatosPaciente/EditarDatosPaciente";
 import { EditarDatosFamiliar } from "./Componentes/DatosPaciente/EditarDatosFamiliar/EditarDatosFamiliar";
 import { ComponenteDatosDoctor } from "./Componentes/DatosDoctor/ComponenteDatosDoctor/ComponenteDatosDoctor";
+import { ComponenteDatosProbabilisticos } from "./Componentes/DatosProbabilisticos/ComponenteDatosProbabilisticos/ComponenteDatosProbabilisticos";
+import { ModalDePregunta } from "./Componentes/UI/Modal/ModalDePregunta";
 import { ComponenteHistorial } from "./Componentes/Historial/ComponenteHistorial";
 import { ModalRe } from "./Componentes/UI/Modal/ModalRe";
 
@@ -49,9 +51,17 @@ const router = createBrowserRouter([
     element: <ComponenteHistorial />
   },
   {
+    path: '/DatosProbabilisticos',
+    element: <ComponenteDatosProbabilisticos />
+  },
+  {
     path: '/ModalVerificado',
     element: <ModalRe/>
-  }
+  },
+  {
+    path: '/Pregunta',
+    element: <ModalDePregunta/>
+  },
   
 
  

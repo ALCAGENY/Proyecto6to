@@ -46,9 +46,9 @@ export function LinkNavegacion() {
                         </a>
                     </li>
                     <li className="mb-5">
-                        <a href="/GuiaUsuario" className="relative group bg-white flex items-center space-x-2 sm:space-x-3 hover:bg-gray-100 rounded-md p-4 transform transition-transform duration-300 hover:scale-105">
+                        <a href="/DatosProbabilisticos" className="relative group bg-white flex items-center space-x-2 sm:space-x-3 hover:bg-gray-100 rounded-md p-4 transform transition-transform duration-300 hover:scale-105">
                             <FontAwesomeIcon icon={faBook} className="text-lg mr-2" /> 
-                            Guia de Usuario
+                            Datos Probabilisticos
                         </a>
                     </li>
                     <div className="mt-8 text-center">

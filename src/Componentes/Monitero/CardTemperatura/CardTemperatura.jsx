@@ -73,7 +73,7 @@ export default function CardTemperatura({ temperature }) {
 
     myChart.setOption(option);
 
-    if (temperature >= 39) {
+    if (temperature >= 37) {
       setShowModal(true);
     } else {
       setShowModal(false);
