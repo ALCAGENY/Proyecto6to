@@ -13,7 +13,7 @@ export function ComponenteMonitoreo() {
   useEffect(() => {
     const fetchTemperature = async () => {
       try {
-        const response = await fetch('http://localhost:8081/api/v1/body-temperature/all');
+        const response = await fetch('https://easycode-api.dreamapp.com.mx/api/v1/body-temperature/all');
         const data = await response.json();
         if (data.length > 0) {
           const latestTemperature = parseFloat(data[data.length - 1].valor);
@@ -35,7 +35,7 @@ export function ComponenteMonitoreo() {
   useEffect(() => {
     const fetchOximeterData = async () => {
       try {
-        const response = await fetch("http://localhost:8081/api/v1/oximeter/all");
+        const response = await fetch("https://easycode-api.dreamapp.com.mx/api/v1/oximeter/all");
         const data = await response.json();
         if (data.length > 0) {
           const latestOximeterValue = parseFloat(data[data.length - 1].valor);
@@ -57,7 +57,7 @@ export function ComponenteMonitoreo() {
   useEffect(() => {
     const fetchBpmData = async () => {
       try {
-        const response = await fetch("http://localhost:8081/api/v1/heart-rate/all");
+        const response = await fetch("https://easycode-api.dreamapp.com.mx/api/v1/heart-rate/all");
         const data = await response.json();
         if (data.length > 0) {
           const latestBpmValue = parseFloat(data[data.length - 1].BPM);

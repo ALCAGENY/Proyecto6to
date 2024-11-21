@@ -16,7 +16,7 @@ export function FormularioDatosFamiliar() {
       }
 
       try {
-        const response = await axios.get(`http://localhost:8081/api/v1/emergency-contacts/${userId}`, {
+        const response = await axios.get(`https://easycode-api.dreamapp.com.mx/api/v1/emergency-contacts/${userId}`, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,

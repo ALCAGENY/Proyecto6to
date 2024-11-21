@@ -16,7 +16,7 @@ export function FormularioDatosPaciente() {
       }
 
       try {
-        const response = await fetch(`http://localhost:8081/api/v1/user/${userId}`, {
+        const response = await fetch(`http://easycode-socket.dreamapp.com.mx/api/v1/user/${userId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

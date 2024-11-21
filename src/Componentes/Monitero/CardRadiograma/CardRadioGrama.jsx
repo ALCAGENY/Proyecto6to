@@ -22,7 +22,7 @@ export function CardRadioGrama() {
   // Fetch function to get the latest BPM data from the API
   const fetchBpmData = async () => {
     try {
-      const response = await fetch("http://localhost:8081/api/v1/heart-rate/all");
+      const response = await fetch("https://easycode-api.dreamapp.com.mx/api/v1/heart-rate/all");
       const data = await response.json();
       if (data.length > 0) {
         const latestBpmValue = parseFloat(data[data.length - 1].BPM); // Obtener el último valor de BPM

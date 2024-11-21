@@ -56,7 +56,7 @@ export function ModalCrearDatosFamiliar() {
           return;
         }
 
-        const response = await fetch("http://localhost:8081/api/v1/emergency-contacts/register", {
+        const response = await fetch("https://easycode-api.dreamapp.com.mx/api/v1/emergency-contacts/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

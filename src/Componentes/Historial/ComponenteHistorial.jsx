@@ -20,7 +20,7 @@ export function ComponenteHistorial() {
 
       try {
         const response = await axios.get(
-          `http://localhost:8081/api/v1/sensor-history/user`,
+          `https://easycode-api.dreamapp.com.mx/api/v1/sensor-history/user`,
           {
             headers: {
               "Content-Type": "application/json",

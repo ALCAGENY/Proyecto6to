@@ -23,7 +23,7 @@ export function FormularioDatosDactor() {
     const fetchDoctorData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8081/api/v1/doctor/${userId}`, // Inserta el userId en la URL
+          `https://easycode-api.dreamapp.com.mx/api/v1/doctor/${userId}`, // Inserta el userId en la URL
           {
             headers: {
               Authorization: `Bearer ${token}`, // Agrega el token al encabezado

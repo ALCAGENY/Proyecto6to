@@ -22,7 +22,7 @@ export function CardOxigenacion() {
   // Fetch function to get the latest oximeter data from the API
   const fetchOximeterData = async () => {
     try {
-      const response = await fetch("http://localhost:8081/api/v1/oximeter/all");
+      const response = await fetch("https://easycode-api.dreamapp.com.mx/api/v1/oximeter/all");
       const data = await response.json();
       if (data.length > 0) {
         const latestOximeterValue = parseFloat(data[data.length - 1].valor); // Obtener el último valor

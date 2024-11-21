@@ -28,7 +28,7 @@ export function AgregarDatosDoctor() {
     }
 
     try {
-      const response = await fetch("http://localhost:8081/api/v1/doctor/register", {
+      const response = await fetch("https://easycode-api.dreamapp.com.mx/api/v1/doctor/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
